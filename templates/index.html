@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Correos</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        /* Encabezado */
+        header {
+            width: 100%;
+            background-color: #000;
+            padding: 10px 0;
+            color: #fff;
+            font-size: 1.9rem;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+
+
+
+
+        /* General */
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background-color: #2e004f; /* Fondo púrpura */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Formulario */
+        form {
+            background-color: #fff; /* Fondo blanco para destacar */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Contenido del correo  */
+        #emailContent {
+            background: #f9f9f9;
+            color: #333;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 5px;
+            display: none; /* Ocultarlo inicialmente */
+        }
+
+        #responseMessage {
+            margin-top: 1px;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        BUSCADOR DE CORREOS
+    </header>
+    <img src="/static/8757794725_47afcf5d-3a8d-47ff-8ecf-171a5294f492.png" alt="Logo" class="logo">
+    <h1>RECIBE TU CÓDIGO AQUÍ</h1>
+    <form id="searchForm">
+        <label for="email">Ingrese el Correo:</label>
+        <input type="email" id="email" name="email" placeholder="Ingresa el correo" required>
+        <button type="submit">Buscar</button>
+    </form>
+    <p id="responseMessage"></p>
+    <div id="emailContent"></div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Obtén el valor del correo ingresado por el usuario
+            const email = document.getElementById('email').value;
+
+            const logoContainer = document.querySelector('.logo-container');
+            logoContainer.style.display = 'none'; // Ocultar el contenedor
+
+            // Limpia las áreas de mensajes previas
+            document.getElementById('responseMessage').textContent = '';
+            const emailContent = document.getElementById('emailContent');
+            emailContent.style.display = 'none'; // Oculta el cuadro inicialmente
+            emailContent.textContent = ''; // Limpia contenido previo
+
+            try {
+                // Realiza la solicitud POST al servidor Flask
+                const response = await fetch('/buscar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: `email=${encodeURIComponent(email)}`
+                });
+
+                // Maneja la respuesta del servidor
+                const result = await response.json();
+
+                // Muestra el mensaje de respuesta
+                document.getElementById('responseMessage').textContent = result.message;
+
+                if (result.success) {
+                    // Muestra el contenido del correo en formato HTML si está disponible
+                    if (result.html) {
+                        emailContent.innerHTML = result.html; // Interpreta HTML
+                    } else {
+                        emailContent.textContent = result.body || 'No se encontró contenido.';
+                    }
+                    emailContent.style.display = 'block'; // Muestra el cuadro dinámicamente
+                }
+            } catch (error) {
+                // Manejo de errores en caso de fallos en la solicitud
+                console.error('Error:', error);
+                document.getElementById('responseMessage').textContent = 'Hubo un error al realizar la solicitud.';
+            }
+        });
+    </script>
+
+    <div class="logo-container">
+        <img src="/static/Amazon_Prime_Video_logo_(2024).svg.png" alt="Logo" class="prime">
+        <img src="/static/Netflix-Symbol.png" alt="Logo" class="netflix">
+        <img src="/static/dinsyyy.png" alt="Logo" class="disney"> 
+    </div>
+</body>
+</html>

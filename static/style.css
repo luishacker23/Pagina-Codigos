@@ -1,0 +1,112 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff;
+    background-color: #2e004f; /* Fondo púrpura oscuro */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+header {
+    position: fixed; /* Fija el header en la parte superior */
+    top: 0;          /* Asegúrate de que no haya espacio arriba */
+    left: 0;         /* Alineado al borde izquierdo */
+    width: 100%;     /* Ocupa todo el ancho de la pantalla */
+    background-color: #000;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 20px;
+    z-index: 1000;   /* Asegúrate de que esté encima de otros elementos */
+    margin: 0;       /* Elimina márgenes del header */
+    box-sizing: border-box; /* Asegúrate de que el padding no afecte el ancho */
+}
+.icon-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+    width: 100%;
+}
+
+.logo {
+    height: 200px; /* Ajusta el tamaño del logo */
+    margin-right: 10px; /* Espaciado entre el logo y el texto */
+
+    }
+
+.netflix {
+    height: 115px; /* Ajusta el tamaño del logo */
+    margin-right: 10px; /* Espaciado entre el logo y el texto */
+}
+
+.prime {
+    height: 100px; /* Ajusta el tamaño del logo */
+    margin-right: 10px; /* Espaciado entre el logo y el texto */
+}
+
+.disney {
+    height: 120px; /* Ajusta el tamaño del logo */
+    margin-right: 10px; /* Espaciado entre el logo y el texto */
+}
+
+
+
+.icon-container img {
+    width: 100px; /* Tamaño del ícono */
+    height: auto;
+}
+
+
+/* Encabezado */
+h1 {
+    font-size: 3rem; /* Título grande */
+    font-weight: bold; /* Negrita */
+    color: #fff; /* Texto blanco */
+    margin-bottom: 10px;
+}
+
+.divider {
+    width: 60px;
+    height: 3px;
+    background-color: #fff;
+    margin: 10px auto;
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: lighter;
+    margin-top: 10px;
+}
+
+/* Contenedor principal */
+.container {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Formulario */
+form {
+    display: flex;
