@@ -13,9 +13,6 @@ PASSWORD = 'unsn xfdz qaob uglx'
 IMAP_SERVER = 'imap.gmail.com'
 
 
-EMAIL = 'juanpedri45u@gmail.com'
-PASSWORD = 'aive swol azfs jizr'
-IMAP_SERVER = 'imap.gmail.com'
 
 # Expresiones regulares para filtrar los asuntos
 ASUNTOS_PERMITIDOS = [
