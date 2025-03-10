@@ -23,7 +23,8 @@ ASUNTOS_PERMITIDOS = [
     r"actualizar.*Hogar.*Disney\+",
     r"código de acceso temporal.*Netflix",
     r"Restablecimiento.*contraseña.*Paramount\+",
-    r"Your one-time passcode for.*Disney\+"
+    r"Your one-time passcode for.*Disney\+",
+    r"Universal\+ código de activación"
 ]
 
 def es_asunto_permitido(asunto):
