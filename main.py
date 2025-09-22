@@ -29,7 +29,8 @@ ASUNTOS_PERMITIDOS = [
     r"Restablecimiento.*contraseña.*Paramount\+",
     r"Your one-time passcode for.*Disney\+",
     r"Universal\+ código de activación",
-    r"(?i)(senha|contraseña).*Paramount\+.*(redefinida|restablecida|fue redefinida|foi redefinida)"
+    r"(?i)a\s*senha\s*da\s*conta\s*da\s*paramount\+\s*foi\s*redefinida",   # Portugués
+    r"(?i)(senha|contraseña).*paramount\+.*(redefinida|restablecida|fue redefinida|foi redefinida)"  # genérico
 
 
 
