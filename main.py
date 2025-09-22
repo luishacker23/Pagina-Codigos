@@ -29,6 +29,8 @@ ASUNTOS_PERMITIDOS = [
     r"Restablecimiento.*contraseña.*Paramount\+",
     r"Your one-time passcode for.*Disney\+",
     r"Universal\+ código de activación"
+    r"(?i)A senha da conta.*Paramount\+.*redefinida"
+
 ]
 
 def es_asunto_permitido(asunto):
