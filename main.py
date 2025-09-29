@@ -17,6 +17,10 @@ PASSWORD2 = 'aive swol azfs jizr'
 EMAIL3 = 'jianjai9@gmail.com'
 PASSWORD3 = 'cqwm nysh vfob rjhk'
 
+EMAIL3 = 'alzatetyt81212@gmail.com'
+PASSWORD3 = 'mrow ulhl lbdz lqsu'
+
+
 
 IMAP_SERVER = 'imap.gmail.com'
 
@@ -30,7 +34,8 @@ ASUNTOS_PERMITIDOS = [
     r"Your one-time passcode for.*Disney\+",
     r"Universal\+ código de activación",
     r"(?i)a\s*senha\s*da\s*conta\s*da\s*paramount\+\s*foi\s*redefinida",   # Portugués
-    r"(?i)(senha|contraseña).*paramount\+.*(redefinida|restablecida|fue redefinida|foi redefinida)"  # genérico
+    r"(?i)(senha|contraseña).*paramount\+.*(redefinida|restablecida|fue redefinida|foi redefinida)",
+    r"A senha da conta da Paramount+ foi redefinida" # genérico
 
 
 
@@ -117,6 +122,8 @@ def buscar():
       # Si no encuentra en la primera, intenta en la segunda
     if not resultado:
         resultado = buscar_correo(EMAIL3, PASSWORD3, correo)
+     if not resultado:
+        resultado = buscar_correo(EMAIL4, PASSWORD4, correo)
 
     if not resultado:
         return jsonify({'success': False, 'message': f'No se encontraron correos para {correo}.'})
